@@ -1,5 +1,5 @@
 {% set name = "weightwatcher" %}
-{% set version = "0.7.3.5" %}
+{% set version = "0.55" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/calculatedcontent/weightwatcher/archive/{{ version }}.tar.gz
-  sha256: e606b1ba25b9bf7f3f9af34ecdec94d0a6adfb92762f2089cc28cc5f5c85d35e
+  sha256: 2fe0017457dfd250d343107fb45093c60396944a6d421e579a7f8d8b49b84a91
 
 build:
-  number: 1
+  number: 0
   entry_points:
     - weightwatcher = weightwatcher:main
   noarch: python
