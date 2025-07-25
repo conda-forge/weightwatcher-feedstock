@@ -36,6 +36,10 @@ requirements:
     - scikit-learn
     - safetensors
     - tqdm
+    - tensorflow
+    - torch
+    - onnx
+    
 
 test:
   imports:
