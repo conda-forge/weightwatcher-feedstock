@@ -10,15 +10,19 @@ source:
   sha256: e606b1ba25b9bf7f3f9af34ecdec94d0a6adfb92762f2089cc28cc5f5c85d35e
 
 build:
-  number: 1
+  number: 2
   entry_points:
     - weightwatcher = weightwatcher:main
   noarch: python
   script: |
-    echo "DEFAULT_PEFT = False" >> weightwatcher/constants.py  # [not win]
-    echo "from .weightwatcher import main" >> weightwatcher/__init__.py  # [not win]
-    echo DEFAULT_PEFT = False >> weightwatcher/constants.py  # [win]
-    echo from .weightwatcher import main >> weightwatcher/__init__.py  # [win]
+    python -c "
+    import os
+    os.makedirs('weightwatcher', exist_ok=True)
+    with open('weightwatcher/constants.py', 'a') as f:
+        f.write('DEFAULT_PEFT = False\n')
+    with open('weightwatcher/__init__.py', 'a') as f:
+        f.write('from .weightwatcher import main\n')
+    "
     {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
